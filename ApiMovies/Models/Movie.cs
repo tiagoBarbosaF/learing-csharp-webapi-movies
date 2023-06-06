@@ -5,6 +5,8 @@ namespace ApiMovies.Models;
 
 public class Movie
 {
+    [Key]
+    [Required]
     public Guid Id { get; set; }
     
     [Required(ErrorMessage = "Title is required.")]
