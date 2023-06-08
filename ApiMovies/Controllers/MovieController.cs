@@ -1,5 +1,7 @@
 ﻿using ApiMovies.Data;
+using ApiMovies.Data.Dtos;
 using ApiMovies.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiMovies.Controllers;
@@ -8,31 +10,24 @@ namespace ApiMovies.Controllers;
 [Route("[controller]")]
 public class MovieController : ControllerBase
 {
-    // private static List<Movie> _movies = new()
-    // {
-    //     new Movie("The Matrix", "Action", 136),
-    //     new Movie("Inception", "Science Fiction", 148),
-    //     new Movie("Pulp Fiction", "Crime", 154),
-    //     new Movie("The Shawshank Redemption", "Drama", 142),
-    //     new Movie("The Dark Knight", "Action", 152),
-    //     new Movie("Fight Club", "Drama", 139),
-    //     new Movie("Goodfellas", "Crime", 146),
-    //     new Movie("Interstellar", "Science Fiction", 169),
-    //     new Movie("The Godfather", "Crime", 175),
-    //     new Movie("The Lord of the Rings: The Fellowship of the Ring", "Fantasy", 178)
-    // };
     private MovieContext _context;
+    private IMapper _mapper;
 
-    public MovieController(MovieContext context)
+    public MovieController(MovieContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     [HttpPost]
-    public IActionResult AddMovie([FromBody] Movie movie)
+    public IActionResult AddMovie([FromBody] CreatMovieDto movieDto)
     {
+        var movie = _mapper.Map<Movie>(movieDto);
+        
         _context.Movies.Add(movie);
+        
         _context.SaveChanges();
+        
         return CreatedAtAction(nameof(GetMovieById), new { id = movie.Id }, movie);
     }
 
