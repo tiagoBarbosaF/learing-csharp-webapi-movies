@@ -2,7 +2,7 @@
 
 namespace ApiMovies.Data.Dtos;
 
-public class CreatMovieDto
+public class CreateMovieDto
 {
     [Required(ErrorMessage = "Title is required.")]
     public string Title { get; set; }
