@@ -20,7 +20,14 @@ public class MovieController : ControllerBase
         _mapper = mapper;
     }
 
+    /// <summary>
+    /// Add a movie in database.
+    /// </summary>
+    /// <param name="movieDto">Object with necessary fields for creating a movie.</param>
+    /// <returns>IActionResults</returns>
+    /// <response code="201">`If insertion is successful</response>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public IActionResult AddMovie([FromBody] CreateMovieDto movieDto)
     {
         var movie = _mapper.Map<Movie>(movieDto);
@@ -33,7 +40,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<GetMovieDto> GetAllMovies([FromQuery] int skip = 0, [FromQuery] int take = 5)
+    public IEnumerable<GetMovieDto> GetAllMovies([FromQuery] int skip = 0, [FromQuery] int take = 50)
     {
         return _mapper.Map<List<GetMovieDto>>(_context.Movies.Skip(skip).Take(take));
     }
@@ -47,8 +54,23 @@ public class MovieController : ControllerBase
             return NotFound();
 
         var movieDto = _mapper.Map<GetMovieDto>(movie);
-        
+
         return Ok(movieDto);
+    }
+
+    [HttpPut("{id:guid}")]
+    public IActionResult PutMovie(Guid id, [FromBody] UpdateMovieDto movieDto)
+    {
+        var movie = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+
+        if (movie == null)
+            return NotFound();
+
+        _mapper.Map(movieDto, movie);
+
+        _context.SaveChanges();
+
+        return NoContent();
     }
 
     [HttpPatch("{id:guid}")]
