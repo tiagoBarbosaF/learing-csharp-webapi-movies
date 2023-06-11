@@ -1,4 +1,4 @@
-﻿namespace ApiMovies.Data.Dtos;
+﻿namespace ApiMovies.Data.Dtos.MovieDto;
 
 public class GetMovieDto
 {

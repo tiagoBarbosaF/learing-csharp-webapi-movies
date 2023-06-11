@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApiMovies.Data.Dtos;
+namespace ApiMovies.Data.Dtos.MovieDto;
 
-public class CreateMovieDto
+public class UpdateMovieDto
 {
     [Required(ErrorMessage = "Title is required.")]
     public string Title { get; set; }

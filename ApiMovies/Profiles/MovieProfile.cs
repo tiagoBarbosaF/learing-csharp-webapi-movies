@@ -1,4 +1,5 @@
 ﻿using ApiMovies.Data.Dtos;
+using ApiMovies.Data.Dtos.MovieDto;
 using ApiMovies.Models;
 using AutoMapper;
 

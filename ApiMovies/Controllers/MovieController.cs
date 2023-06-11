@@ -1,5 +1,6 @@
 ﻿using ApiMovies.Data;
 using ApiMovies.Data.Dtos;
+using ApiMovies.Data.Dtos.MovieDto;
 using ApiMovies.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
