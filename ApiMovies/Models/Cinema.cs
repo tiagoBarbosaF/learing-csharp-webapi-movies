@@ -10,4 +10,7 @@ public class Cinema
     
     [Required(ErrorMessage = "Field Name is required.")]
     public string Name { get; private set; }
+
+    public Guid AddressId { get; set; }
+    public virtual Address Address { get; set; }
 }

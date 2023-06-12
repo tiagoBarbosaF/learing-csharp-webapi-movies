@@ -28,7 +28,7 @@ public class CinemaController : ControllerBase
 
         _context.SaveChanges();
 
-        return CreatedAtAction(nameof(GetCinemaById), new { Id = cinema.Id }, cinemaDto);
+        return CreatedAtAction(nameof(GetCinemaById), new { id = cinema.Id }, cinemaDto);
     }
 
     [HttpGet]
