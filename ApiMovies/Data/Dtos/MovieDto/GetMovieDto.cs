@@ -1,4 +1,6 @@
-﻿namespace ApiMovies.Data.Dtos.MovieDto;
+﻿using ApiMovies.Data.Dtos.SessionDto;
+
+namespace ApiMovies.Data.Dtos.MovieDto;
 
 public class GetMovieDto
 {
@@ -7,4 +9,5 @@ public class GetMovieDto
     public string Gender { get; set; }
     public int Duration { get; set; }
     public DateTime TimeConsult { get; set; } = DateTime.Now;
+    public ICollection<GetSessionDto> Sessions { get; set; }
 }

@@ -1,0 +1,12 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ApiMovies.Models;
+
+public class Session
+{
+    [Key] [Required] public Guid Id { get; set; }
+    [Required] public Guid MovieId { get; set; }
+    public virtual Movie Movie { get; set; }
+    public Guid? CinemaId { get; set; }
+    public virtual Cinema Cinema { get; set; }
+}

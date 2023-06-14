@@ -1,5 +1,4 @@
 ﻿using ApiMovies.Data;
-using ApiMovies.Data.Dtos;
 using ApiMovies.Data.Dtos.MovieDto;
 using ApiMovies.Models;
 using AutoMapper;
@@ -43,7 +42,7 @@ public class MovieController : ControllerBase
     [HttpGet]
     public IEnumerable<GetMovieDto> GetAllMovies([FromQuery] int skip = 0, [FromQuery] int take = 50)
     {
-        return _mapper.Map<List<GetMovieDto>>(_context.Movies.Skip(skip).Take(take));
+        return _mapper.Map<List<GetMovieDto>>(_context.Movies.Skip(skip).Take(take).ToList());
     }
 
     [HttpGet("{id:guid}")]
