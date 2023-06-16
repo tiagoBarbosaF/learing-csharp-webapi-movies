@@ -2,5 +2,6 @@
 
 public class GetSessionDto
 {
-    public Guid Id { get; set; }
+    public Guid MovieId { get; set; }
+    public Guid CinemaId { get; set; }
 }
