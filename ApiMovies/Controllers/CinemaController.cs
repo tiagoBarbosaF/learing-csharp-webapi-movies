@@ -3,6 +3,7 @@ using ApiMovies.Data.Dtos.CinemaDto;
 using ApiMovies.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiMovies.Controllers;
 
@@ -32,9 +33,21 @@ public class CinemaController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<GetCinemaDto> GetCinemas()
+    public IEnumerable<GetCinemaDto> GetCinemas([FromQuery] Guid? addressId = null)
     {
-        return _mapper.Map<List<GetCinemaDto>>(_context.Cinemas.ToList());
+        if (addressId == null)
+            return _mapper.Map<List<GetCinemaDto>>(_context.Cinemas.ToList());
+
+        return _mapper.Map<List<GetCinemaDto>>(_context.Cinemas.Where(cinema => cinema.Address.Id == addressId).ToList());
+//         return _mapper.Map<List<GetCinemaDto>>(_context.Cinemas.FromSqlRaw(sql: $@"
+//         SELECT 
+//             c.Id,
+//             c.Name,
+//             c.AddressId
+//         FROM Cinemas c
+//         WHERE
+//             c.AddressId = '{addressId}'
+// ").ToList());
     }
 
     [HttpGet("{id:guid}")]

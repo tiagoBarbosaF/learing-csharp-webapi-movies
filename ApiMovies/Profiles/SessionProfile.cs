@@ -1,4 +1,6 @@
-﻿using ApiMovies.Data.Dtos.SessionDto;
+﻿using ApiMovies.Data.Dtos.AddressDto;
+using ApiMovies.Data.Dtos.CinemaDto;
+using ApiMovies.Data.Dtos.SessionDto;
 using ApiMovies.Models;
 using AutoMapper;
 

@@ -1,4 +1,5 @@
-﻿using ApiMovies.Data.Dtos.SessionDto;
+﻿using ApiMovies.Data.Dtos.CinemaDto;
+using ApiMovies.Data.Dtos.SessionDto;
 
 namespace ApiMovies.Data.Dtos.MovieDto;
 

@@ -1,4 +1,8 @@
-﻿namespace ApiMovies.Data.Dtos.SessionDto;
+﻿using ApiMovies.Data.Dtos.AddressDto;
+using ApiMovies.Data.Dtos.CinemaDto;
+using ApiMovies.Data.Dtos.MovieDto;
+
+namespace ApiMovies.Data.Dtos.SessionDto;
 
 public class GetSessionDto
 {

@@ -1,4 +1,5 @@
-﻿using ApiMovies.Data.Dtos.AddressDto;
+﻿using System.Text.Json.Serialization;
+using ApiMovies.Data.Dtos.AddressDto;
 using ApiMovies.Data.Dtos.SessionDto;
 
 namespace ApiMovies.Data.Dtos.CinemaDto;
